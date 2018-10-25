@@ -1,4 +1,3 @@
-import GUI
+import gui
 
-
-GUI.runWindow()
+gui.runwindow()

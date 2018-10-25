@@ -1,9 +1,15 @@
+from tkinter import *
+from tkinter import Menu
+from tkinter import ttk
+
+import portscan
+
 class gui(object):
 
     # set up main page
     def __init__(self, master):
         self.master = master
-        master.title("Jonathan T & Matt S. - Advanced Network Scanner")
+        master.title("Jonathan T & Matt S - Advanced Port Scanner")
 
         self.frame1=Frame(self.master)
         self.frame1.pack(side=TOP, fill=X)
@@ -75,7 +81,7 @@ class gui(object):
     def aboutwindow(self):
         newwin = Toplevel(master=None)
         newwin.geometry("600x100")
-        display = Label(newwin, text="About section:\nApp made by Jonathan Trejo and Matt Sullivan\nFor CSCI 5742 - Cybersecurity")
+        display = Label(newwin, text="About section:")
         display.pack()
 
     # submit information and run
