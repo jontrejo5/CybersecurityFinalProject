@@ -1,15 +1,9 @@
-from tkinter import *
-from tkinter import Menu
-from tkinter import ttk
-
-import sniffer
-
-class GUI(object):
+class gui(object):
 
     # set up main page
     def __init__(self, master):
         self.master = master
-        master.title("Jonathan T & Matt S Port Scanner")
+        master.title("Jonathan T & Matt S. - Advanced Network Scanner")
 
         self.frame1=Frame(self.master)
         self.frame1.pack(side=TOP, fill=X)
@@ -29,59 +23,77 @@ class GUI(object):
         self.label=Label(self.frame2, text='Packet Sniffer', height=2)
         self.label.grid(row=3, column=1)
 
+        #create tabs
+        self.tab_control = ttk.Notebook(self.master)
+        self.tab1 = ttk.Frame(self.tab_control)
+        self.tab_control.add(self.tab1, text="Port Scanner")
+        self.tab2 = ttk.Frame(self.tab_control)
+        self.tab_control.add(self.tab2, text="Page 2")
+        self.tab_control.pack(expand=1, fill="both")
+
         # text box label
-        self.label1=Label(self.frame2,text='Enter IP Address')
-        self.label2=Label(self.frame2,text='Enter start port')
-        self.label3=Label(self.frame2,text='Enter end port')
+        self.label1=Label(self.frame1,text='Enter IP Address')
+        self.label2=Label(self.frame1,text='Enter start port')
+        self.label3=Label(self.frame1,text='Enter end port')
 
         self.label1.grid(row=4,column=0)
         self.label2.grid(row=5,column=0)
         self.label3.grid(row=6,column=0)
 
         # text box
-        self.entry1=Entry(self.frame2)
-        self.entry2=Entry(self.frame2)
-        self.entry3=Entry(self.frame2)
+        self.entry1=Entry(self.frame1)
+        self.entry2=Entry(self.frame1)
+        self.entry3=Entry(self.frame1)
 
         self.entry1.grid(row=4, column=1)
         self.entry2.grid(row=5, column=1)
         self.entry3.grid(row=6, column=1)
 
         # text area box
-        self.textbox=Text(self.frame2)
-        self.textbox.configure(state="disabled")
+        self.textbox=Text(self.tab1)
         self.textbox.grid(row=8, column=0, rowspan=1, columnspan=2)
 
         # enter button
-        self.btn = Button(self.frame2,text='Submit')
+        self.btn = Button(self.frame1, text='Submit', command=lambda: self.runportscan(self.entry1.get(), self.entry2.get(), self.entry3.get()))
         self.btn.grid(row=7,column=1)
+
+        #then disable the text box to not allow the user to write in it
+        #self.textbox.configure(state="disabled")
+
+
+
 
 
         # set window size
-        self.master.geometry('750x500')
+        self.master.geometry('650x600')
 
-
-    def createTabs(self):
-        self.tab_control = ttk.Notebook(self.master)
-        tab1 = ttk.Frame(self.tab_control)
-        self.tab_control.add(tab1, text="Page 1")
-        tab2 = ttk.Frame(self.tab_control)
-        self.tab_control.add(tab2, text="Page 2")
+    def valueGET(self, val1, val2, val3):
+        print(val1, val2, val3)
 
 
     #about information window
-    def aboutWindow(self):
+    def aboutwindow(self):
         newwin = Toplevel(master=None)
-        newwin.geometry("500x100")
-        display = Label(newwin, text="About section:\nApp made by Jonathan Trejo\nFor CSCI 5742 - Cybersecurity")
+        newwin.geometry("600x100")
+        display = Label(newwin, text="About section:\nApp made by Jonathan Trejo and Matt Sullivan\nFor CSCI 5742 - Cybersecurity")
         display.pack()
 
-    def runScan(self, ipaddr, startport, endport):
-        portscan.portscanner(ipaddr, startport, endport)
-        self.textbox.insert()
+    # submit information and run
+    def runportscan(self, ipaddr, startport, endport):
+
+        #enable the text box to write into it
+        #self.textbox.configure(state='enabled')
+
+        #run port scanner from portscan.py
+        result = portscan.runportscan(ipaddr,startport,endport)
+        self.textbox.insert(INSERT, result)
+
+        # then disable the text box to not allow the user to write in it
+        #self.textbox.configure(state="disabled")
 
 
-def runWindow():
+
+def runwindow():
     root = Tk()
-    my_gui = GUI(root)
+    my_gui = gui(root)
     root.mainloop()
