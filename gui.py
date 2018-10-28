@@ -9,7 +9,7 @@ class gui(object):
     # set up main page
     def __init__(self, master):
         self.master = master
-        master.title("Jonathan T & Matt S - Advanced Port Scanner")
+        master.title("Jon T & Matt S - Advanced Port Scanner")
 
         self.frame1=Frame(self.master)
         self.frame1.pack(side=TOP, fill=X)
