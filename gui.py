@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import Menu
 from tkinter import ttk
+import tkinter.messagebox
+from tkinter.ttk import Progressbar
 
 import portscan
 
@@ -11,23 +13,41 @@ class gui(object):
         self.master = master
         master.title("Jon T & Matt S - Advanced Port Scanner")
 
+        self.statusVar = StringVar()  # Variable to store status bar messsage
+        self.statusVar.set("Ready")  # Set status bar message
+
+        self.frame3=Frame(self.master)
+        self.frame3.pack(side=BOTTOM, fill=X)
+
         self.frame1=Frame(self.master)
-        self.frame1.pack(side=TOP, fill=X)
+        self.frame1.pack(side=LEFT, fill=X)
 
         self.frame2=Frame(self.master)
-        self.frame2.pack(side=TOP, fill=X)
+        self.frame2.pack(side=LEFT, fill=X)
+
+
+        # *********StatusBar************
+        self.status = Label(self.frame3, text=self.statusVar.get(), bd=1, relief=SUNKEN,anchor=W)  # Cool looking dynamic status bar
+        self.status.pack(side=BOTTOM, fill=X)  # stuck to the bottom
 
         # *****menu setup*****
-        self.m=Menu(self.frame1)
-        self.master.config(menu=self.m)
+        self.dropDown = Menu(master)  # starts out dropdown menu
+        master.config(menu=self.dropDown)
+        self.fileMenu = Menu(self.dropDown)
+        self.dropDown.add_cascade(label="File", menu=self.fileMenu)  # Adds File submenu
+        self.fileMenu.add_command(label="New", command=self.clearData)  # Adds New to file
+        self.fileMenu.add_separator()  # Makes it pretty
+        self.fileMenu.add_command(label="Exit", command=master.quit)  # Adds a quit function
 
-        self.submenu=Menu(self.m, tearoff=0)
-        self.m.add_cascade(label='File', menu=self.submenu)
-        self.submenu.add_command(label='About', command=self.aboutwindow)
+        self.helpMenu = Menu(self.dropDown)  # Creates a help submenu
+        self.dropDown.add_cascade(label="Help", menu=self.helpMenu)  # adds menu options
+ #       self.helpMenu.add_command(label="Help me!", command=self.sorry)
+        self.helpMenu.add_command(label="About", command=self.signature)
+
 
         # *****gui elements*****
-        self.label=Label(self.frame2, text='Packet Sniffer', height=2)
-        self.label.grid(row=3, column=1)
+        #self.label=Label(self.frame2, text='Packet Sniffer', height=2)
+        #self.label.grid(row=3, column=1)
 
         #create tabs
         self.tab_control = ttk.Notebook(self.master)
@@ -56,12 +76,32 @@ class gui(object):
         self.entry3.grid(row=6, column=1)
 
         # text area box
-        self.textbox=Text(self.tab1)
-        self.textbox.grid(row=8, column=0, rowspan=1, columnspan=2)
+        self.openPorts=Listbox(self.tab1)
+        self.openPorts.pack(expand=1, fill="both")
+        #self.textbox.grid(row=8, column=0, rowspan=1, columnspan=2)
+
+#        self.statusFrame=Frame(self.frame1,width = 200, height =200)
+#        self.statusFrame.grid(row=8, columnspan=2)
+#        self.statusFrame.columnconfigure(0, weight=10)
+#        self.statusFrame.grid_propagate(False)
+
+#        self.statusText=Text(self.statusFrame)
+#        self.statusText.grid(sticky="we")
+
+        self.statusText=Listbox(self.frame1)
+        self.statusText.grid(row=8, stick=N+S+E+W, columnspan=2)
 
         # enter button
         self.btn = Button(self.frame1, text='Submit', command=lambda: self.runportscan(self.entry1.get(), self.entry2.get(), self.entry3.get()))
         self.btn.grid(row=7,column=1)
+
+        self.progressBar = tkinter.ttk.Progressbar(self.frame1, orient='horizontal', value=0, mode='determinate')
+        self.progressBar.grid(row=12, stick=W+E, columnspan =2)
+
+        self.progressUpdate=Label(self.frame1, text="0/0")
+        self.progressUpdate.grid(row=13, stick=W)
+
+
 
         #then disable the text box to not allow the user to write in it
         #self.textbox.configure(state="disabled")
@@ -81,7 +121,7 @@ class gui(object):
     def aboutwindow(self):
         newwin = Toplevel(master=None)
         newwin.geometry("600x100")
-        display = Label(newwin, text="About section:")
+        display = Label(newwin, text="Created by Jonathan Trejo and Matt Sullivan \n For CSCI 5742 Cybersecurity Programming \n University of Colorado Denver \n Fall 2018")
         display.pack()
 
     # submit information and run
@@ -89,13 +129,59 @@ class gui(object):
 
         #enable the text box to write into it
         #self.textbox.configure(state='enabled')
+        self.counter = int(startport)
+        self.end=int(endport)
+        self.ratio=(100/(self.end-self.counter))
+        self.numPorts=0
+        self.barProgress=0
+        self.statusVar.set("Scanning")  # updates the status in the GUI
+        self.status.config(text="Scanning")
+        self.statusText.insert(END, "Scanning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))  # message to user#
+#        self.statusText.insert(INSERT,  "Scanning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))
+        self.statusText.insert(END, "Starting")
+
+        while self.counter < self.end:
+            result = portscan.runportscan(ipaddr,self.counter,self.counter+1)
+            if result[0] != "":
+                self.openPorts.insert(END, result[0])
+            self.counter=self.counter+1
+            self.numPorts=self.numPorts+result[1]
+            self.barProgress=self.barProgress+self.ratio
+            self.progressBar.config(value=self.barProgress)  # updates the progressBar
+            self.progressUpdate.config(text=str(self.counter) +"/"+str(self.end))
+            self.progressUpdate.update_idletasks()
+            self.openPorts.update_idletasks()  # Refreshes GUI
+            self.progressBar.update_idletasks()
 
         #run port scanner from portscan.py
-        result = portscan.runportscan(ipaddr,startport,endport)
-        self.textbox.insert(INSERT, result)
+    #    result = portscan.runportscan(ipaddr,startport,endport)
+    #    self.textbox.insert(INSERT, result)
+        self.statusText.insert(END, "Scan Complete")
+        self.statusText.insert(END, "{0} Total ports open in range {1} to {2}".format(self.numPorts, startport, endport))  # final message to user
+        self.statusVar.set("Ready")  # Updates status
+        self.status.config(text="Ready")  # Refreshes Status
+        self.openPorts.update_idletasks()  # Refreshes GUI
+        tkinter.messagebox.showinfo('Status', 'Scan Complete!')  # message to user
 
         # then disable the text box to not allow the user to write in it
         #self.textbox.configure(state="disabled")
+
+    def clearData(self):  # Function for "New" option, clears all values and entry/textboxes
+
+        self.statusText.delete(0,END)
+
+        self.openPorts.delete(0, END)  # Clears the listbox
+
+        self.progressBar.config(value=0)  # resets the progressBar
+        self.progressBar.update_idletasks()
+
+        self.entry1.delete(0,END)
+        self.entry2.delete(0,END)
+        self.entry3.delete(0,END)
+
+
+    def signature(self):
+        tkinter.messagebox.showinfo('About', " Created by Jonathon Trejo and Matt Sullivan \n For CSCI 5742 Cybersecurity Programming \n University of Colorado Denver \n Fall 2018")  # Awesomeness
 
 
 
