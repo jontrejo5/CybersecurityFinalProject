@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0adb668a-871c-4f0f-9d0a-1f98b1c24b3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/json/nvdcve-1.0-modified.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/portscan.py" beforeDir="false" afterPath="$PROJECT_DIR$/portscan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protocols/ports.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/ports.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +22,8 @@
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -59,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+            <state relative-caret-position="1095">
+              <caret line="77" column="23" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -68,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/json/ports.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
@@ -93,14 +92,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/portscan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+            <state relative-caret-position="765">
+              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1540912128008" expanded="true" signature="214:217" ph="..." />
+                <marker date="1541086457123" expanded="true" signature="214:217" ph="..." />
               </folding>
             </state>
           </provider>
@@ -109,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/json/nvdcve-1.0-modified.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="1033260">
               <caret line="68884" column="127" selection-start-line="68884" selection-start-column="119" selection-end-line="68884" selection-end-column="127" />
             </state>
           </provider>
@@ -142,8 +141,8 @@
         <option value="$PROJECT_DIR$/gui.py" />
         <option value="$PROJECT_DIR$/protocolpull.py" />
         <option value="$PROJECT_DIR$/protocols/ports.json" />
-        <option value="$PROJECT_DIR$/portscan.py" />
         <option value="$PROJECT_DIR$/json/ports.json" />
+        <option value="$PROJECT_DIR$/portscan.py" />
       </list>
     </option>
   </component>
@@ -160,6 +159,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,7 +176,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,17 +317,6 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/portscan.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sniffer.py" />
     <entry file="file://$PROJECT_DIR$/GUI.py" />
@@ -358,8 +346,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        <state relative-caret-position="1095">
+          <caret line="77" column="23" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -375,19 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/json/nvdcve-1.0-modified.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="1033260">
           <caret line="68884" column="127" selection-start-line="68884" selection-start-column="119" selection-end-line="68884" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/portscan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1540912128008" expanded="true" signature="214:217" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -401,6 +378,17 @@
             <element signature="e#407#568#0" />
             <element signature="e#585#762#0" />
             <element signature="e#781#1495#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portscan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1541086457123" expanded="true" signature="214:217" ph="..." />
           </folding>
         </state>
       </provider>
