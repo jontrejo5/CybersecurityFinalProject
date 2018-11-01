@@ -28,19 +28,16 @@ def runportscan(hostname, startport, endport):
 
     # file location
     fileDir = os.path.dirname(os.path.realpath("__file__"))
-    print (fileDir)
-
     filename = 'ports.json'
 
-
-
+    #socket setup
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     for x in range(startport,endport):
         result = sock.connect_ex((hostname, x))
         if result == 0:
             stringresult += str("Port "+ str(x) + " is open\n")
-            with open(fileDir+"/protocols/ports.json") as f:
+            with open(fileDir+"/json/ports.json") as f:
                 data = json.load(f)
 
                 stringresult += str(data.get("ports").get(str(x)).get("description"))
