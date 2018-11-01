@@ -49,4 +49,4 @@ def runportscan(hostname, startport, endport):
 
 
 
-return stringresult, addtoCounter
+    return stringresult, addtoCounter
