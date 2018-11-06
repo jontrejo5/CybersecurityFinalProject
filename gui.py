@@ -33,13 +33,13 @@ class gui(object):
         # *****menu setup*****
         self.dropDown = Menu(master)  # starts out dropdown menu
         master.config(menu=self.dropDown)
-        self.fileMenu = Menu(self.dropDown)
+        self.fileMenu = Menu(self.dropDown, tearoff=False)
         self.dropDown.add_cascade(label="File", menu=self.fileMenu)  # Adds File submenu
         self.fileMenu.add_command(label="New", command=self.clearData)  # Adds New to file
         self.fileMenu.add_separator()  # Makes it pretty
         self.fileMenu.add_command(label="Exit", command=master.quit)  # Adds a quit function
 
-        self.helpMenu = Menu(self.dropDown)  # Creates a help submenu
+        self.helpMenu = Menu(self.dropDown, tearoff=False)  # Creates a help submenu
         self.dropDown.add_cascade(label="Help", menu=self.helpMenu)  # adds menu options
  #       self.helpMenu.add_command(label="Help me!", command=self.sorry)
         self.helpMenu.add_command(label="About", command=self.signature)
