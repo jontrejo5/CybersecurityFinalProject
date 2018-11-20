@@ -39,7 +39,7 @@ def runportscan(hostname, startport, endport):
         addtoCounter=0
         result = sock.connect_ex((hostname, x))
         if result == 0:
-            stringresult += str("Port "+ str(x) + " is open\n")
+            stringresult += str("Port "+ str(x) + " is open")
     #        with open(fileDir+"/protocols/ports.json") as f:
    #             data = json.load(f)
 

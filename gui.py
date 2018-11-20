@@ -1,3 +1,5 @@
+import json
+import os
 from tkinter import *
 from tkinter import Menu
 from tkinter import ttk
@@ -53,8 +55,6 @@ class gui(object):
         self.tab_control = ttk.Notebook(self.master)
         self.tab1 = ttk.Frame(self.tab_control)
         self.tab_control.add(self.tab1, text="Port Scanner")
-        self.tab2 = ttk.Frame(self.tab_control)
-        self.tab_control.add(self.tab2, text="Page 2")
         self.tab_control.pack(expand=1, fill="both")
 
         # text box label
@@ -79,6 +79,11 @@ class gui(object):
         self.openPorts=Listbox(self.tab1)
         self.openPorts.pack(expand=1, fill="both")
         #self.textbox.grid(row=8, column=0, rowspan=1, columnspan=2)
+
+        #setup for port info
+        self.openPorts.bind("<Double-Button-1>", self.portinfo)
+
+
 
 #        self.statusFrame=Frame(self.frame1,width = 200, height =200)
 #        self.statusFrame.grid(row=8, columnspan=2)
@@ -107,9 +112,6 @@ class gui(object):
         #self.textbox.configure(state="disabled")
 
 
-
-
-
         # set window size
         self.master.geometry('650x600')
 
@@ -124,6 +126,36 @@ class gui(object):
         display = Label(newwin, text="Created by Jonathan Trejo and Matt Sullivan \n For CSCI 5742 Cybersecurity Programming \n University of Colorado Denver \n Fall 2018")
         display.pack()
 
+
+    def portinfo(self, string):
+
+        string = self.openPorts.get(ACTIVE)
+
+        #set the dir where json file exists
+        fileDir = os.path.dirname(os.path.realpath("__file__"))
+
+        # where we save our result
+        stringresult = ''
+
+        # get the out from the text line and save only the numbers(port) to x
+        x = ''.join(c for c in string if c.isdigit())
+
+        # open the json file
+        with open(fileDir + "/json/ports.json") as f:
+            # where the json info is stored
+            data = json.load(f)
+
+
+
+            stringresult += str(data.get("ports", {}).get(x).get("description", {}))
+
+
+        newwin = Toplevel(master=None)
+        newwin.geometry("600x100")
+        display = Label(newwin, text=stringresult)
+        display.pack()
+
+
     # submit information and run
     def runportscan(self, ipaddr, startport, endport):
 
@@ -136,7 +168,7 @@ class gui(object):
         self.barProgress=0
         self.statusVar.set("Scanning")  # updates the status in the GUI
         self.status.config(text="Scanning")
-        self.statusText.insert(END, "Scanning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))  # message to user#
+        self.statusText.insert(END, "Sc anning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))  # message to user#
 #        self.statusText.insert(INSERT,  "Scanning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))
         self.statusText.insert(END, "Starting")
 
