@@ -154,10 +154,12 @@ class gui(object):
                 portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
         # find keywords from the port description (Matt)
-        portwords = portinfo.split()
+        
+        portwords = wordCheck.wordCheck(portinfo)
+        #portwords = portinfo.split()
 
-        for x in portwords:
-            wordCheck.wordCheck(x)
+        #for x in portwords:
+        #    wordCheck.wordCheck(x)
 
 
 
@@ -192,8 +194,8 @@ class gui(object):
         self.barProgress=0
         self.statusVar.set("Scanning")  # updates the status in the GUI
         self.status.config(text="Scanning")
-        self.statusText.insert(END, "Sc anning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))  # message to user#
-#        self.statusText.insert(INSERT,  "Scanning ports from {0} to {1} using IP {2}".format(startport, endport,ipaddr))
+        self.statusText.insert(END, "Scanning ports from {0} to {1}".format(startport, endport))  # message to user#
+        self.statusText.insert(END, "Using IP [0]".format(ipaddr))
         self.statusText.insert(END, "Starting")
 
         while self.counter < self.end:
