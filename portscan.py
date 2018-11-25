@@ -2,6 +2,7 @@ import os
 import socket
 import json
 import pprint
+import checkWord
 
 #print("Jonathan,  python port scanner")
 
@@ -42,7 +43,6 @@ def runportscan(hostname, startport, endport):
             stringresult += str("Port "+ str(x) + " is open")
     #        with open(fileDir+"/protocols/ports.json") as f:
    #             data = json.load(f)
-
   #              stringresult += str(data.get("ports").get(str(x)).get("description"))
             addtoCounter=1
 
