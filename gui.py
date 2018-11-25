@@ -153,14 +153,15 @@ class gui(object):
             else:
                 portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
-        # find keywords from the port description (Matt))
+        # find keywords from the port description (Matt)
         portwords = portinfo.split()
 
-        # find in the database (Jon)
         for x in portwords:
             wordCheck.wordCheck(x)
 
 
+
+        # find in the database (Jon)
         with open(fileDir + "json/nvdcve-1.0-modified.json") as f:
             # where the json info is stored
             data = json.load(f)
