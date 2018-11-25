@@ -4,6 +4,8 @@ from tkinter import *
 from tkinter import Menu
 from tkinter import ttk
 import tkinter.messagebox
+import wordCheck
+
 from tkinter.ttk import Progressbar
 
 import portscan
@@ -135,7 +137,8 @@ class gui(object):
         fileDir = os.path.dirname(os.path.realpath("__file__"))
 
         # where we save our result
-        stringresult = ''
+        portinfo = ''
+        vulnerabilityinfo = ''
 
         # get the out from the text line and save only the numbers(port) to x
         x = ''.join(c for c in string if c.isdigit())
@@ -146,10 +149,29 @@ class gui(object):
             data = json.load(f)
 
             if x not in str(data.get("ports",{}).get(x)):
-                stringresult += "Port not found"
+                portinfo += "Port not found"
             else:
-                stringresult += str(data.get("ports", {}).get(x).get("description", {}))
+                portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
+        # find keywords from the port description (Matt))
+        portwords = portinfo.split()
+
+        # find in the database (Jon)
+        for x in portwords:
+            wordCheck.wordCheck(x)
+
+
+        with open(fileDir + "json/nvdcve-1.0-modified.json") as f:
+            # where the json info is stored
+            data = json.load(f)
+
+            if x not in str(data.get("ports", {}).get(x)):
+                vulnerabilityinfo += "Port not found"
+            else:
+                vulnerabilityinfo += str(data.get("ports", {}).get(x).get("description", {}))
+
+
+        stringresult = portinfo + vulnerabilityinfo
 
         newwin = Toplevel(master=None)
         newwin.geometry("600x100")
