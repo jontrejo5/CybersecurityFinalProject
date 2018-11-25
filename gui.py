@@ -145,9 +145,10 @@ class gui(object):
             # where the json info is stored
             data = json.load(f)
 
-
-
-            stringresult += str(data.get("ports", {}).get(x).get("description", {}))
+            if x not in data:
+                stringresult += "Port not found"
+            else:
+                stringresult += str(data.get("ports", {}).get(x).get("description", {}))
 
 
         newwin = Toplevel(master=None)
