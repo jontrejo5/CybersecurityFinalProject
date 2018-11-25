@@ -16,3 +16,4 @@ def wordCheck(searchWord):
         word = word.lower() + "\n"
         if word not in words:
             refinedList.append(word)
+    return refinedList
