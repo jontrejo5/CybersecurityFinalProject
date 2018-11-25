@@ -145,7 +145,7 @@ class gui(object):
             # where the json info is stored
             data = json.load(f)
 
-            if x not in data:
+            if x not in str(data.get("ports",{}).get(x)):
                 stringresult += "Port not found"
             else:
                 stringresult += str(data.get("ports", {}).get(x).get("description", {}))

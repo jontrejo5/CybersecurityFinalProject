@@ -2,7 +2,7 @@ import os
 import socket
 import json
 import pprint
-import checkWord
+import wordCheck
 
 #print("Jonathan,  python port scanner")
 
@@ -20,7 +20,7 @@ def runportscan(hostname, startport, endport):
 
 
     # reply = os.system("pint -c 1 " + hostname)
-    # if reply == 0:
+    # if reply == 0:a
     #     pingstatus = "active"
     # else:
     #     pingstatus = "error"

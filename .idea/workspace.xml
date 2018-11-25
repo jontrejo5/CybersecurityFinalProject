@@ -32,25 +32,25 @@
         <counts>
           <entry key="files" value="1" />
           <entry key="json" value="2" />
-          <entry key="py" value="17" />
+          <entry key="py" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="Python" value="18" />
+          <entry key="Python" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="6" />
-          <entry key="py" value="1702" />
+          <entry key="py" value="1780" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="6" />
-          <entry key="Python" value="1702" />
+          <entry key="Python" value="1780" />
         </counts>
       </usages-collector>
     </session>
@@ -60,39 +60,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+            <state relative-caret-position="329">
+              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1542742780957" expanded="true" signature="4655:4754" ph="..." />
+                <marker date="1543168050719" expanded="true" signature="4655:4754" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3.6/posixpath.py">
+        <entry file="file://$PROJECT_DIR$/wordList.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="15">
+              <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
+        <entry file="file://$PROJECT_DIR$/wordCheck.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="2097" selection-start-line="2097" selection-end-line="2097" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python3.6/traceback.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="471" selection-start-line="471" selection-end-line="471" />
+            <state relative-caret-position="285">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,15 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/json/ports.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="3604" column="38" selection-start-line="3604" selection-start-column="38" selection-end-line="3604" selection-end-column="38" />
-              <folding>
-                <element signature="e#30#189#0" />
-                <element signature="e#204#391#0" />
-                <element signature="e#407#568#0" />
-                <element signature="e#585#762#0" />
-                <element signature="e#781#1495#0" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -116,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -125,11 +112,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/portscan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="32" column="12" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="12" />
+            <state relative-caret-position="330">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1541476281642" expanded="true" signature="214:217" ph="..." />
               </folding>
             </state>
           </provider>
@@ -138,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/json/nvdcve-1.0-modified.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1033260">
+            <state relative-caret-position="638036">
               <caret line="68884" column="127" selection-start-line="68884" selection-start-column="119" selection-end-line="68884" selection-end-column="127" />
             </state>
           </provider>
@@ -170,6 +156,7 @@
       <find>filename</find>
       <find>string</find>
       <find>torrent</find>
+      <find>checkWord</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,6 +171,7 @@
         <option value="$PROJECT_DIR$/protocolpull.py" />
         <option value="$PROJECT_DIR$/protocols/ports.json" />
         <option value="$PROJECT_DIR$/json/ports.json" />
+        <option value="$PROJECT_DIR$/wordCheck.py" />
         <option value="$PROJECT_DIR$/portscan.py" />
         <option value="$PROJECT_DIR$/gui.py" />
       </list>
@@ -267,6 +255,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CybersecurityFinalProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="protocolpull" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CybersecurityFinalProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -313,10 +322,12 @@
       <item itemvalue="Python.sniffer" />
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.protocolpull" />
+      <item itemvalue="Python.gui" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.gui" />
         <item itemvalue="Python.protocolpull" />
         <item itemvalue="Python.sniffer" />
       </list>
@@ -336,7 +347,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1438" y="27" width="1440" height="1440" extended-state="4" />
+    <frame x="1440" y="27" width="1440" height="1593" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.14820042" />
@@ -344,7 +355,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976282" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41086456" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41027397" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2884468" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -357,25 +368,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14820042" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32976282" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.41086456" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.2884468" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32976282" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -407,31 +399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json/nvdcve-1.0-modified.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1033260">
-          <caret line="68884" column="127" selection-start-line="68884" selection-start-column="119" selection-end-line="68884" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/portscan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1541476281642" expanded="true" signature="214:217" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.6/posixpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
@@ -455,25 +422,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/json/ports.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="3604" column="38" selection-start-line="3604" selection-start-column="38" selection-end-line="3604" selection-end-column="38" />
+        <state relative-caret-position="90">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordList.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#30#189#0" />
-            <element signature="e#204#391#0" />
-            <element signature="e#407#568#0" />
-            <element signature="e#585#762#0" />
-            <element signature="e#781#1495#0" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/nvdcve-1.0-modified.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638036">
+          <caret line="68884" column="127" selection-start-line="68884" selection-start-column="119" selection-end-line="68884" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portscan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+        <state relative-caret-position="329">
+          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1542742780957" expanded="true" signature="4655:4754" ph="..." />
+            <marker date="1543168050719" expanded="true" signature="4655:4754" ph="..." />
           </folding>
         </state>
       </provider>
