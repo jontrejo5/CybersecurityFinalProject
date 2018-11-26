@@ -15,5 +15,5 @@ def wordCheck(searchWord):
         word = re.sub(r'[^\w\s]','',word)
         word = word.lower() + "\n"
         if word not in words:
-            refinedList.append(word)
+            refinedList.append(word[:-1]+" ")
     return refinedList
