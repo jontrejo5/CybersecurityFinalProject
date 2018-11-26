@@ -5,6 +5,7 @@ from tkinter import Menu
 from tkinter import ttk
 import tkinter.messagebox
 import wordCheck
+import returnDescription
 
 from tkinter.ttk import Progressbar
 
@@ -158,15 +159,7 @@ class gui(object):
         portwords = wordCheck.wordCheck(portinfo)
 
         # find in the database
-        searchDB = open("allitems.txt", "r")
-        for line in searchDB:
-            line.encode('utf-8').strip()
-            print(line)
-            for x in portwords:
-                print(x)
-                if x in line:
-                    print(line)
-        searchDB.close()
+        vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
 
         stringresult = portinfo + vulnerabilityinfo
