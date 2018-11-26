@@ -153,25 +153,20 @@ class gui(object):
             else:
                 portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
-        # find keywords from the port description (Matt)
-        
+        # find keywords from the port description
+
         portwords = wordCheck.wordCheck(portinfo)
-        #portwords = portinfo.split()
 
-        #for x in portwords:
-        #    wordCheck.wordCheck(x)
-
-
-
-        # find in the database (Jon)
-        with open(fileDir + "json/nvdcve-1.0-modified.json") as f:
-            # where the json info is stored
-            data = json.load(f)
-
-            if x not in str(data.get("ports", {}).get(x)):
-                vulnerabilityinfo += "Port not found"
-            else:
-                vulnerabilityinfo += str(data.get("ports", {}).get(x).get("description", {}))
+        # find in the database
+        searchDB = open("allitems.txt", "r")
+        for line in searchDB:
+            line.encode('utf-8').strip()
+            print(line)
+            for x in portwords:
+                print(x)
+                if x in line:
+                    print(line)
+        searchDB.close()
 
 
         stringresult = portinfo + vulnerabilityinfo
