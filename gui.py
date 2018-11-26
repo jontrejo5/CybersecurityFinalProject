@@ -159,7 +159,8 @@ class gui(object):
         portwords = wordCheck.wordCheck(portinfo)
 
         # find in the database
-        vulnerabilityinfo = returnDescription.returnDescription(portwords)
+        if portwords == "Port not found":
+            vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
 
         stringresult = portinfo + vulnerabilityinfo
