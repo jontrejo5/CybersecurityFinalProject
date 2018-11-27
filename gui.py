@@ -168,6 +168,9 @@ class gui(object):
 
         stringresult = portinfo + vulnerabilityinfo
 
+        vlist = vulnerabilityinfo.split()
+
+
 #        string = self.openPorts.get(ACTIVE)
 
         #set the dir where json file exists
@@ -209,8 +212,13 @@ class gui(object):
        # stringresult = str(portinfo) + str(vulnerabilityinfo)
 
         newwin = Toplevel(master=None)
-        newwin.geometry("600x100")
+        newwin.geometry("600x500")
         display = Label(newwin, text=stringresult)
+
+        vulnerabilites = Listbox(display)
+        for item in vlist:
+            vulnerabilites.insert(END, item)
+
         display.pack()
 
 
