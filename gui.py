@@ -209,16 +209,24 @@ class gui(object):
 
        # stringresult = str(portinfo) + str(vulnerabilityinfo)
 
-        newwin = Toplevel(master=None)
-        newwin.geometry("600x500")
-        display = Label(newwin, text=stringresult)
-        display.pack(side=TOP)
-        numResults = Label(newwin, text=numMessage)
-        numResults.pack(side=TOP)
-        vulner = Listbox(newwin)
+        self.newwin = Toplevel(master=None)
+        self.newwin.geometry("600x500")
+        self.listFrame=Frame(self.newwin)
+        self.display = Label(self.newwin, text=stringresult)
+        self.display.pack(side=TOP)
+        self.numResults = Label(self.newwin, text=numMessage)
+        self.numResults.pack(side=TOP)
+        self.listFrame.pack(side=TOP, fill=BOTH)
+        self.scrollH=Scrollbar(self.listFrame, orient="horizontal")
+        self.scrollH.pack(side=BOTTOM, fill=X)
+        self.scrollV=Scrollbar(self.listFrame, orient="vertical")
+        self.scrollV.pack(side=RIGHT, fill=Y)
+        self.vulner = Listbox(self.listFrame, yscrollcommand=self.scrollV.set, xscrollcommand=self.scrollH.set)
         for item in vulnerabilityinfo:
-            vulner.insert(END, item)
-        vulner.pack(fill="both", expand=1)
+            self.vulner.insert(END, item)
+        self.vulner.pack(fill="both", expand=1)
+        self.scrollV.config(command=self.vulner.yview)
+        self.scrollH.config(command=self.vulner.xview)
 
 
     # submit information and run
