@@ -144,6 +144,8 @@ class gui(object):
         # get the out from the text line and save only the numbers(port) to x
         x = ''.join(c for c in string if c.isdigit())
 
+
+
         # open the json file
         with open(fileDir + "/json/ports.json") as f:
             # where the json info is stored
@@ -152,7 +154,10 @@ class gui(object):
             if x not in str(data.get("ports",{}).get(x)):
                 portinfo += "Port not found"
             else:
-                portinfo += str(data.get("ports", {}).get(x).get("description", {}))
+                if x not in str(data.get("ports", {}).get(x).get("description", {})):
+                    portinfo += "Port description not found"
+                else:
+                    portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
         # find keywords from the port description
 
