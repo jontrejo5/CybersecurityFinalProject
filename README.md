@@ -1,8 +1,7 @@
 # CybersecurityFinalProject
 
-## Jonathan Trejo
-
-## Matt Sullivan
+## Created by
+Matt Sullivan and Jonathan Trejo
 
 # About
 
