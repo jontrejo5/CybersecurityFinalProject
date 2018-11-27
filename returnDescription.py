@@ -1,7 +1,9 @@
 import csv
 
 def returnDescription(input):
-    stringout = ''
+    listOut=[]
+    stringout=''
+    URL=''
     line_count=0
     with open('allitems.csv', 'r', errors='ignore') as csv_file:
         next(csv_file)
@@ -11,18 +13,13 @@ def returnDescription(input):
  #           print (row)
             for entry in input:
                 if entry in row["Description"]:
-                    stringout += row["Description"]+"\n"
+                    getURL=row["References"].split("|")
+                    for refs in getURL:
+                        if "URL:" in refs:
+                            URL=refs[7:-3]
+                    listOut.append(row["Name"] +", " + row["Description"]+", "+URL)
                     line_count += 1
-    print(f'Returned {line_count} potential vulnerabilities.')
-    if stringout == '':
-        stringout = "\nNo Matches found"
-    return stringout
-
-
- #   with open('allitems.csv', 'r') as csv_file:
-#        csv_reader = csv.reader(csv_file, delimiter=',')
-#        line_count = 0
-#        for row in csv_reader:
-#            if input[0] == row[2]:
-#                 stringout += row[2]
-#            line_count += 1
+    stringout ="Returned " + str(line_count) + " potential vulnerabilities."
+    if line_count == 0:
+        stringout = "No Matches found"
+    return stringout, listOut

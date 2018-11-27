@@ -165,11 +165,9 @@ class gui(object):
         #if portwords == "Port not found":
         vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
+        numMessage, vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
-        stringresult = portinfo + vulnerabilityinfo
-
-        vlist = vulnerabilityinfo.split()
-
+        stringresult = portinfo
 
 #        string = self.openPorts.get(ACTIVE)
 
@@ -212,14 +210,15 @@ class gui(object):
        # stringresult = str(portinfo) + str(vulnerabilityinfo)
 
         newwin = Toplevel(master=None)
-        newwin.geometry("600x500")
+        newwin.geometry("600x100")
         display = Label(newwin, text=stringresult)
-
-        vulnerabilites = Listbox(display)
-        for item in vlist:
-            vulnerabilites.insert(END, item)
-
-        display.pack()
+        display.pack(side=TOP)
+        numResults = Label(newwin, text=numMessage)
+        numResults.pack(side=TOP)
+        vulner = Listbox(newwin)
+        for item in vulnerabilityinfo:
+            vulner.insert(END, item)
+        vulner.pack(side=BOTTOM, fill="both")
 
 
     # submit information and run
