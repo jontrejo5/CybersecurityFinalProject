@@ -99,6 +99,9 @@ class gui(object):
 
         self.statusText=Listbox(self.frame1)
         self.statusText.grid(row=8, stick=N+S+E+W, columnspan=2)
+        self.statusScroll=Scrollbar(self.frame1, orient="vertical")
+        self.statusScroll.grid(row=8,column=3,sticky=N+S+E)
+        self.statusScroll.config(command=self.statusText.yview)
 
         # enter button
         self.btn = Button(self.frame1, text='Submit', command=lambda: self.runportscan(self.entry1.get(), self.entry2.get(), self.entry3.get()))
