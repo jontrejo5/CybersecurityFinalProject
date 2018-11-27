@@ -10,8 +10,8 @@ def returnPortDescription(portNum):
                 if portNum == int(row["Port Number"]):
                     return row["Description"]
             else:
-                if int(workNums[0]) <= portNum <= int(workNums[1]):
-                    return row["Description"]
+                if int(workNums[0]) <= int(portNum) <= int(workNums[1]):
+                    return str(row["Description"])
 #            workLine = line.split(",")
 #            if len(workLine) >=3:
 #                if workLine[1] == portNum:

@@ -2,13 +2,13 @@ import string
 import re
 
 def wordCheck(searchWord):
-    file = open("wordlist.txt")
+    file = open("wordList.txt")
     words = file.read()
     for item in words:
         item = item.lower()
         item = re.sub(r'[^\w\s]', '', item)
 
-    searchWord=searchWord.split()
+    searchWord=str(searchWord).split()
     refinedList=[]
 
     for word in searchWord:

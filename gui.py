@@ -6,6 +6,7 @@ from tkinter import ttk
 import tkinter.messagebox
 import wordCheck
 import returnDescription
+import returnPortDescription
 
 from tkinter.ttk import Progressbar
 
@@ -146,18 +147,20 @@ class gui(object):
 
 
 
-        # open the json file
-        with open(fileDir + "/json/ports.json") as f:
-            # where the json info is stored
-            data = json.load(f)
+        portinfo = returnPortDescription.returnPortDescription(x)
 
-            if x not in str(data.get("ports",{}).get(x)):
-                portinfo += "Port not found"
-            else:
-                if x not in str(data.get("ports", {}).get(x).get("description", {})):
-                    portinfo += "Port description not found"
-                else:
-                    portinfo += str(data.get("ports", {}).get(x).get("description", {}))
+        # open the json file
+        # with open(fileDir + "/json/ports.json") as f:
+        #     # where the json info is stored
+        #     data = json.load(f)
+        #
+        #     if x not in str(data.get("ports",{}).get(x)):
+        #         portinfo += "Port not found"
+        #     else:
+        #         if x not in str(data.get("ports", {}).get(x).get("description", {})):
+        #             portinfo += "Port description not found"
+        #         else:
+        #             portinfo += str(data.get("ports", {}).get(x).get("description", {}))
 
         # find keywords from the port description
 
@@ -168,7 +171,7 @@ class gui(object):
             vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
 
-        stringresult = portinfo + vulnerabilityinfo
+        stringresult = str(portinfo) + str(vulnerabilityinfo)
 
         newwin = Toplevel(master=None)
         newwin.geometry("600x100")
