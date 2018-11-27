@@ -11,15 +11,15 @@ The Advanced Port Scanner helps analyze the users system for potential vulnerabi
 2. Choose the starting port and ending port that you would want to scan.
 3. Click the submit button or press enter
 4. Wait for the process to finish
---* The output will show in a list to the side
---* Clicking on a line in the list will bring up the respective information for that port, including its usage and vulnerability information.
+5. The output will show in a list to the side
+6. Clicking on a line in the list will bring up the respective information for that port, including its usage and vulnerability information.
 
 ## Supported Platforms
 Any system running Python 3, specifically 3.6 will be able to run this program
 
 ## System requirements
---* Python 3
---* Network connectivity 
+- Python 3
+- Network connectivity 
  
 ## Sources
 
