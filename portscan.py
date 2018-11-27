@@ -1,8 +1,13 @@
+#CSCI 5742
+#Cybersecurity Programming
+#Final Project
+#Portscanner interface with CVE
+#Jonathan Trejo and Matt Sullivan
+#11/27/2018
+#portscan.py
+
 import os
 import socket
-import json
-import pprint
-import wordCheck
 
 #print("Jonathan,  python port scanner")
 
@@ -17,21 +22,7 @@ def runportscan(hostname, startport, endport):
     startport = int(startport)
     endport = int(endport)
 
-
-
-    # reply = os.system("pint -c 1 " + hostname)
-    # if reply == 0:a
-    #     pingstatus = "active"
-    # else:
-    #     pingstatus = "error"
-
     stringresult = ""
-
-    # file location
-#    fileDir = os.path.dirname(os.path.realpath("__file__"))
- #   print (fileDir)
-
-    filename = 'ports.json'
 
     socket.setdefaulttimeout(.1)  # Speeds up the socket scanning speed
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -41,9 +32,6 @@ def runportscan(hostname, startport, endport):
         result = sock.connect_ex((hostname, x))
         if result == 0:
             stringresult += str("Port "+ str(x) + " is open")
-    #        with open(fileDir+"/protocols/ports.json") as f:
-   #             data = json.load(f)
-  #              stringresult += str(data.get("ports").get(str(x)).get("description"))
             addtoCounter=1
 
 
