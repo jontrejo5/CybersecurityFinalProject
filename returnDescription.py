@@ -8,11 +8,11 @@ def returnDescription(input):
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
-            if input[0] == row[2]:
-                 stringout += row[2]
-            line_count += 1
-        print(f'Processed {line_count} lines.')
-
+            for item in input:
+                if item == row[2]:
+                    stringout += "\n" + str(row[2]) + "\n"
+                line_count += 1
+                
     if stringout == '':
         stringout = "\nNo data found"
 
