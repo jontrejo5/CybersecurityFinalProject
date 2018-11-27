@@ -23,5 +23,5 @@ Any system running Python 3, specifically 3.6 will be able to run this program
  
 ## Sources
 
-Vulnerability databse : https://cve.mitre.org/data/downloads/
-Port list: 
+- Vulnerability databse : https://cve.mitre.org/data/downloads/
+- Port list: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
