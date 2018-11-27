@@ -1,8 +1,16 @@
-import json
+#CSCI 5742
+#Cybersecurity Programming
+#Final Project
+#Portscanner interface with CVE
+#Jonathan Trejo and Matt Sullivan
+#11/27/2018
+#gui.py
+
 import os
 from tkinter import *
 from tkinter import Menu
 from tkinter import ttk
+import webbrowser
 import tkinter.messagebox
 import wordCheck
 import returnDescription
@@ -12,7 +20,7 @@ from tkinter.ttk import Progressbar
 
 import portscan
 
-class gui(object):
+class gui(object):                  #GUI class
 
     # set up main page
     def __init__(self, master):
@@ -22,13 +30,13 @@ class gui(object):
         self.statusVar = StringVar()  # Variable to store status bar messsage
         self.statusVar.set("Ready")  # Set status bar message
 
-        self.frame3=Frame(self.master)
+        self.frame3=Frame(self.master)          #frame for the status bar
         self.frame3.pack(side=BOTTOM, fill=X)
 
-        self.frame1=Frame(self.master)
+        self.frame1=Frame(self.master)          #left side frame
         self.frame1.pack(side=LEFT, fill=X)
 
-        self.frame2=Frame(self.master)
+        self.frame2=Frame(self.master)          #right side frame
         self.frame2.pack(side=LEFT, fill=X)
 
 
@@ -47,16 +55,11 @@ class gui(object):
 
         self.helpMenu = Menu(self.dropDown, tearoff=False)  # Creates a help submenu
         self.dropDown.add_cascade(label="Help", menu=self.helpMenu)  # adds menu options
- #       self.helpMenu.add_command(label="Help me!", command=self.sorry)
         self.helpMenu.add_command(label="About", command=self.signature)
 
 
-        # *****gui elements*****
-        #self.label=Label(self.frame2, text='Packet Sniffer', height=2)
-        #self.label.grid(row=3, column=1)
-
         #create tabs
-        self.tab_control = ttk.Notebook(self.master)
+        self.tab_control = ttk.Notebook(self.master)        #Tabs allow future functionality expansion potential
         self.tab1 = ttk.Frame(self.tab_control)
         self.tab_control.add(self.tab1, text="Port Scanner")
         self.tab_control.pack(expand=1, fill="both")
@@ -82,41 +85,28 @@ class gui(object):
         # text area box
         self.openPorts=Listbox(self.tab1)
         self.openPorts.pack(expand=1, fill="both")
-        #self.textbox.grid(row=8, column=0, rowspan=1, columnspan=2)
 
         #setup for port info
-        self.openPorts.bind("<Double-Button-1>", self.portinfo)
+        self.openPorts.bind("<Double-Button-1>", self.portinfo) #double clicking launches the functions to gather info
 
 
-
-#        self.statusFrame=Frame(self.frame1,width = 200, height =200)
-#        self.statusFrame.grid(row=8, columnspan=2)
-#        self.statusFrame.columnconfigure(0, weight=10)
-#        self.statusFrame.grid_propagate(False)
-
-#        self.statusText=Text(self.statusFrame)
-#        self.statusText.grid(sticky="we")
-
-        self.statusText=Listbox(self.frame1)
+        self.statusText=Listbox(self.frame1)            #Status updates for user
         self.statusText.grid(row=8, stick=N+S+E+W, columnspan=2)
-        self.statusScroll=Scrollbar(self.frame1, orient="vertical")
+
+        self.statusScroll=Scrollbar(self.frame1, orient="vertical")     #scroll through history of status updates
         self.statusScroll.grid(row=8,column=3,sticky=N+S+E)
         self.statusScroll.config(command=self.statusText.yview)
 
         # enter button
         self.btn = Button(self.frame1, text='Submit', command=lambda: self.runportscan(self.entry1.get(), self.entry2.get(), self.entry3.get()))
+        master.bind('<Return>', lambda event: self.runportscan(self.entry1.get(), self.entry2.get(), self.entry3.get()))
         self.btn.grid(row=7,column=1)
 
-        self.progressBar = tkinter.ttk.Progressbar(self.frame1, orient='horizontal', value=0, mode='determinate')
+        self.progressBar = tkinter.ttk.Progressbar(self.frame1, orient='horizontal', value=0, mode='determinate')   #dynamic progress bar
         self.progressBar.grid(row=12, stick=W+E, columnspan =2)
 
-        self.progressUpdate=Label(self.frame1, text="0/0")
+        self.progressUpdate=Label(self.frame1, text="0/0")      #dynamic text updates
         self.progressUpdate.grid(row=13, stick=W)
-
-
-
-        #then disable the text box to not allow the user to write in it
-        #self.textbox.configure(state="disabled")
 
 
         # set window size
@@ -125,112 +115,55 @@ class gui(object):
     def valueGET(self, val1, val2, val3):
         print(val1, val2, val3)
 
-
-    #about information window
-    def aboutwindow(self):
-        newwin = Toplevel(master=None)
-        newwin.geometry("600x100")
-        display = Label(newwin, text="Created by Jonathan Trejo and Matt Sullivan \n For CSCI 5742 Cybersecurity Programming \n University of Colorado Denver \n Fall 2018")
-        display.pack()
-
+    def launchpPortInfo(self):
+        string = self.openPorts.get(ACTIVE)
+        selfinfo(string)
+        return "break".port
 
     def portinfo(self, string):
-        
-        string = self.openPorts.get(ACTIVE)
 
-        #set the dir where json file exists
-        fileDir = os.path.dirname(os.path.realpath("__file__"))
+        string = self.openPorts.get(ACTIVE)
 
         # where we save our result
         portinfo = ''
         vulnerabilityinfo = ''
 
         # get the out from the text line and save only the numbers(port) to x
-        x = ''.join(c for c in string if c.isdigit())
-        portinfo=returnPortDescription.returnPortDescription(int(x))
-        print(portinfo)
-        # open the json file
-      #  with open(fileDir + "/json/ports.json") as f:
-            # where the json info is stored
-      #      data = json.load(f)
+        x = ''.join(c for c in string if c.isdigit())       #gets the port #
+        portinfo=returnPortDescription.returnPortDescription(int(x))        #calls returnPortDescription function to return that port's description
+        portwords = wordCheck.wordCheck(portinfo)   #uses wordCheck to check the words in the description and eliminate any that are in the english language
+        numMessage, vulnerabilityinfo = returnDescription.returnDescription(portwords)  #checks the remaining words against the descriptions from the CVE
 
-      #      if x not in str(data.get("ports",{}).get(x)):
-      #          portinfo += "Port not found"
-      #      else:
-     #           portinfo += str(data.get("ports", {}).get(x).get("description", {}))
+        stringresult = "Port usage: " + portinfo    #Creates message to user
 
-        # find keywords from the port description
+        self.newwin = Toplevel(master=None)         #Pop up window with results
+        self.newwin.geometry("900x300")
 
-        portwords = wordCheck.wordCheck(portinfo)
-        print(portwords)
+        self.listFrame=Frame(self.newwin)       #Frame for the results
 
-        # find in the database
-        #if portwords == "Port not found":
-        vulnerabilityinfo = returnDescription.returnDescription(portwords)
-
-        numMessage, vulnerabilityinfo = returnDescription.returnDescription(portwords)
-
-        stringresult = portinfo
-
-#        string = self.openPorts.get(ACTIVE)
-
-        #set the dir where json file exists
-#        fileDir = os.path.dirname(os.path.realpath("__file__"))
-
-        # where we save our result
-#        portinfo = ''
- #       vulnerabilityinfo = ''
-
-        # get the out from the text line and save only the numbers(port) to x
-  #      x = ''.join(c for c in string if c.isdigit())
-
-
-
-   #     portinfo = returnPortDescription.returnPortDescription(x)
-
-        # open the json file
-        # with open(fileDir + "/json/ports.json") as f:
-        #     # where the json info is stored
-        #     data = json.load(f)
-        #
-        #     if x not in str(data.get("ports",{}).get(x)):
-        #         portinfo += "Port not found"
-        #     else:
-        #         if x not in str(data.get("ports", {}).get(x).get("description", {})):
-        #             portinfo += "Port description not found"
-        #         else:
-        #             portinfo += str(data.get("ports", {}).get(x).get("description", {}))
-
-        # find keywords from the port description
-
-    #    portwords = wordCheck.wordCheck(portinfo)
-
-        # find in the database
-     #   if portwords == "Port not found":
-      #      vulnerabilityinfo = returnDescription.returnDescription(portwords)
-
-
-       # stringresult = str(portinfo) + str(vulnerabilityinfo)
-
-        self.newwin = Toplevel(master=None)
-        self.newwin.geometry("600x500")
-        self.listFrame=Frame(self.newwin)
-        self.display = Label(self.newwin, text=stringresult)
+        self.display = Label(self.newwin, text=stringresult, font=(16)) #messages to user
         self.display.pack(side=TOP)
-        self.numResults = Label(self.newwin, text=numMessage)
+        self.numResults = Label(self.newwin, text=numMessage, font=("BOLD",16))
         self.numResults.pack(side=TOP)
+        self.internet = Label(self.newwin, text="For more information about any of these vulnerabilities, please double click on the vulnerability to be taken to its CVE entry and reference website")
+        self.internet.pack(side=TOP)
         self.listFrame.pack(side=TOP, fill=BOTH)
-        self.scrollH=Scrollbar(self.listFrame, orient="horizontal")
+        self.scrollH=Scrollbar(self.listFrame, orient="horizontal")     #creating and packing the scrollbars
         self.scrollH.pack(side=BOTTOM, fill=X)
         self.scrollV=Scrollbar(self.listFrame, orient="vertical")
         self.scrollV.pack(side=RIGHT, fill=Y)
+
         self.vulner = Listbox(self.listFrame, yscrollcommand=self.scrollV.set, xscrollcommand=self.scrollH.set)
-        for item in vulnerabilityinfo:
+        for item in vulnerabilityinfo:      #populates list
             self.vulner.insert(END, item)
         self.vulner.pack(fill="both", expand=1)
-        self.scrollV.config(command=self.vulner.yview)
+
+        self.scrollV.config(command=self.vulner.yview)  #associating the scrollbars to the list
         self.scrollH.config(command=self.vulner.xview)
 
+        self.vulner.bind("<Double-Button-1>", self.launchInfo)      #binds double clicking on the list to the internet
+        self.ok = Button(self.newwin, text='OK', command=lambda: self.newwin.destroy())
+        self.ok.pack(side=TOP)
 
     # submit information and run
     def runportscan(self, ipaddr, startport, endport):
@@ -248,7 +181,7 @@ class gui(object):
         self.statusText.insert(END, "Using IP [0]".format(ipaddr))
         self.statusText.insert(END, "Starting")
 
-        while self.counter < self.end:
+        while self.counter < self.end:              #updates the counters
             result = portscan.runportscan(ipaddr,self.counter,self.counter+1)
             if result[0] != "":
                 self.openPorts.insert(END, result[0])
@@ -271,9 +204,6 @@ class gui(object):
         self.openPorts.update_idletasks()  # Refreshes GUI
         tkinter.messagebox.showinfo('Status', 'Scan Complete!')  # message to user
 
-        # then disable the text box to not allow the user to write in it
-        #self.textbox.configure(state="disabled")
-
     def clearData(self):  # Function for "New" option, clears all values and entry/textboxes
 
         self.statusText.delete(0,END)
@@ -291,7 +221,18 @@ class gui(object):
     def signature(self):
         tkinter.messagebox.showinfo('About', " Created by Jonathon Trejo and Matt Sullivan \n For CSCI 5742 Cybersecurity Programming \n University of Colorado Denver \n Fall 2018")  # Awesomeness
 
+    def launchInfo(self, event):    #function to launch websites associated with the vulnerabilities
+        # Windows
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
 
+#        Linux
+#        chrome_path = '/usr/bin/google-chrome %s'
+
+        workLine=self.vulner.get(ACTIVE).split("|")
+        destination="http://cve.mitre.org/cgi-bin/cvename.cgi?name="+workLine[0]    #launches tab with CVE
+        destination2=workLine[2]                                                    #launches tab from database
+        webbrowser.get(chrome_path).open_new_tab(destination2)
+        webbrowser.get(chrome_path).open_new_tab(destination)
 
 def runwindow():
     root = Tk()
