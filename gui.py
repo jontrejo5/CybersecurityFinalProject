@@ -210,17 +210,15 @@ class gui(object):
        # stringresult = str(portinfo) + str(vulnerabilityinfo)
 
         newwin = Toplevel(master=None)
-        newwin.geometry("600x500")
-        display = Label(newwin, text=stringresult)
+        newwin.geometry("600x100")
         display = Label(newwin, text=stringresult)
         display.pack(side=TOP)
         numResults = Label(newwin, text=numMessage)
         numResults.pack(side=TOP)
-
-        vulnerabilites = Listbox(display)
+        vulner = Listbox(newwin)
         for item in vulnerabilityinfo:
-            vulnerabilites.insert(END, item)
-        vulnerabilities.pack(side=TOP)
+            vulner.insert(END, item)
+        vulner.pack(side=BOTTOM, fill="both")
 
 
     # submit information and run
