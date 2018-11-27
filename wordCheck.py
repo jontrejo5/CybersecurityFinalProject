@@ -2,18 +2,19 @@ import string
 import re
 
 def wordCheck(searchWord):
-    file = open("wordList.txt")
+    file = open("wordlist.txt")
     words = file.read()
     for item in words:
         item = item.lower()
-        item = re.sub(r'[^\w\s]', '', item)
+#        item = re.sub(r'[^\w\s]', '', item)
 
-    searchWord=str(searchWord).split()
+    searchWord=searchWord.split()
     refinedList=[]
 
     for word in searchWord:
-        word = re.sub(r'[^\w\s]','',word)
-        word = word.lower() + "\n"
-        if word not in words:
-            refinedList.append(word[:-1]+" ")
+ #       word = re.sub(r'[^\w\s]','',word)
+        testword = word.lower()+"\n"
+#        word = word.lower() + "\n"
+        if testword not in words:
+            refinedList.append(word+" ")
     return refinedList
