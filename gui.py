@@ -132,7 +132,7 @@ class gui(object):
 
 
     def portinfo(self, string):
-
+        
         string = self.openPorts.get(ACTIVE)
 
         #set the dir where json file exists
@@ -144,10 +144,45 @@ class gui(object):
 
         # get the out from the text line and save only the numbers(port) to x
         x = ''.join(c for c in string if c.isdigit())
+        portinfo=returnPortDescription.returnPortDescription(int(x))
+        print(portinfo)
+        # open the json file
+      #  with open(fileDir + "/json/ports.json") as f:
+            # where the json info is stored
+      #      data = json.load(f)
+
+      #      if x not in str(data.get("ports",{}).get(x)):
+      #          portinfo += "Port not found"
+      #      else:
+     #           portinfo += str(data.get("ports", {}).get(x).get("description", {}))
+
+        # find keywords from the port description
+
+        portwords = wordCheck.wordCheck(portinfo)
+        print(portwords)
+
+        # find in the database
+        #if portwords == "Port not found":
+        vulnerabilityinfo = returnDescription.returnDescription(portwords)
+
+
+        stringresult = portinfo + vulnerabilityinfo
+
+#        string = self.openPorts.get(ACTIVE)
+
+        #set the dir where json file exists
+#        fileDir = os.path.dirname(os.path.realpath("__file__"))
+
+        # where we save our result
+#        portinfo = ''
+ #       vulnerabilityinfo = ''
+
+        # get the out from the text line and save only the numbers(port) to x
+  #      x = ''.join(c for c in string if c.isdigit())
 
 
 
-        portinfo = returnPortDescription.returnPortDescription(x)
+   #     portinfo = returnPortDescription.returnPortDescription(x)
 
         # open the json file
         # with open(fileDir + "/json/ports.json") as f:
@@ -164,14 +199,14 @@ class gui(object):
 
         # find keywords from the port description
 
-        portwords = wordCheck.wordCheck(portinfo)
+    #    portwords = wordCheck.wordCheck(portinfo)
 
         # find in the database
-        if portwords == "Port not found":
-            vulnerabilityinfo = returnDescription.returnDescription(portwords)
+     #   if portwords == "Port not found":
+      #      vulnerabilityinfo = returnDescription.returnDescription(portwords)
 
 
-        stringresult = str(portinfo) + str(vulnerabilityinfo)
+       # stringresult = str(portinfo) + str(vulnerabilityinfo)
 
         newwin = Toplevel(master=None)
         newwin.geometry("600x100")
