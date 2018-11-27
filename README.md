@@ -7,7 +7,7 @@ Matt Sullivan and Jonathan Trejo
 The Advanced Port Scanner helps analyze the users system for potential vulnerabilities by getting an IP and scanning the ports within a user defined range. The program is built using Python.
 
 ## Usage
---* Type in the name of the IP address that you want to scan. Typically, on a local system you would want to just type in localhost.
+⋅⋅*Type in the name of the IP address that you want to scan. Typically, on a local system you would want to just type in localhost.
 --* Choose the starting port and ending port that you would want to scan.
 --* Click the submit button or press enter
 --* Wait for the process to finish
